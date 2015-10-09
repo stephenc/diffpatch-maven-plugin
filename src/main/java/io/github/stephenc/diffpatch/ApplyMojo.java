@@ -71,7 +71,7 @@ public class ApplyMojo extends AbstractMojo {
                     // this is the start of a new header section, so apply any current diff from previous section.
                     apply(diff, oldFile, newFile, p.lastModified());
 
-                    int endIndex = line.indexOf(4, '\t');
+                    int endIndex = line.indexOf('\t', 4);
                     // now start out the next section
                     diff.clear();
                     
@@ -80,7 +80,7 @@ public class ApplyMojo extends AbstractMojo {
                     
                     // consume the +++ line also
                     line = lines.get(++i);
-                    endIndex = line.indexOf(4, '\t');
+                    endIndex = line.indexOf('\t', 4);
                     newFile = line.substring(4, endIndex == -1 ? line.length() : endIndex);
                     diff.add(line);
                 } else if (!line.isEmpty()) {
