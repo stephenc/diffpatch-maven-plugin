@@ -137,9 +137,9 @@ public class ApplyMojo extends AbstractMojo {
                 FileUtils.writeLines(patchedFile, encoding, patch.applyTo(FileUtils.readLines(sourceFile, encoding)));
                 new FileOutputStream(markerFile).close();
             } catch (IOException e) {
-                throw new MojoExecutionException("Could not apply patch", e);
+                throw new MojoExecutionException("Could not apply patch to " + newFile, e);
             } catch (PatchFailedException e) {
-                throw new MojoExecutionException("Could not apply patch", e);
+                throw new MojoExecutionException("Could not apply patch to " + newFile, e);
             }
         }
     }
